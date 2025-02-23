@@ -80,6 +80,17 @@ public static class WahaResourceBuilderExtensions
         return builder.WithVolume(name, mountPath);
     }
 
+    /// <summary>
+    /// Sets the lifetime of the Waha resource container.
+    /// </summary>
+    /// <param name="builder">The resource builder.</param>
+    /// <param name="lifetime">The container lifetime.</param>
+    /// <returns>An <see cref="IResourceBuilder{WahaResource}"/> for further configuration.</returns>
+    public static IResourceBuilder<WahaResource> WithLifetime(this IResourceBuilder<WahaResource> builder, ContainerLifetime lifetime)
+    {
+        return builder.WithAnnotation(new ContainerLifetimeAnnotation { Lifetime = lifetime });
+    }
+
     internal static class WahaContainerImageTags
     {
         internal const string Registry = "docker.io";
