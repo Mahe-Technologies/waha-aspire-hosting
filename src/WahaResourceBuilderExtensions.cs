@@ -38,6 +38,48 @@ public static class WahaResourceBuilderExtensions
             .ExcludeFromManifest();
     }
 
+    /// <summary>
+    /// Adds a data volume to the Waha resource using the default volume name.
+    /// </summary>
+    /// <param name="builder">The resource builder.</param>
+    /// <returns>An <see cref="IResourceBuilder{WahaResource}"/> for further configuration.</returns>
+    public static IResourceBuilder<WahaResource> WithDataVolume(this IResourceBuilder<WahaResource> builder)
+    {
+        return builder.WithVolume(WAHA_VOLUME_NAME, WAHA_VOLUME_MOUNT_PATH);
+    }
+
+    /// <summary>
+    /// Adds a data volume to the Waha resource using the specified volume name.
+    /// </summary>
+    /// <param name="builder">The resource builder.</param>
+    /// <param name="name">The name of the volume.</param>
+    /// <returns>An <see cref="IResourceBuilder{WahaResource}"/> for further configuration.</returns>
+    /// <exception cref="ArgumentNullException">Thrown if <paramref name="builder"/> or <paramref name="name"/> is null.</exception>
+    public static IResourceBuilder<WahaResource> WithDataVolume(this IResourceBuilder<WahaResource> builder, string name)
+    {
+        ArgumentNullException.ThrowIfNull(builder, nameof(builder));
+        ArgumentNullException.ThrowIfNull(name, nameof(name));
+
+        return builder.WithVolume(name, WAHA_VOLUME_MOUNT_PATH);
+    }
+
+    /// <summary>
+    /// Adds a data volume to the Waha resource using the specified volume name and mount path.
+    /// </summary>
+    /// <param name="builder">The resource builder.</param>
+    /// <param name="name">The name of the volume.</param>
+    /// <param name="mountPath">The mount path for the volume.</param>
+    /// <returns>An <see cref="IResourceBuilder{WahaResource}"/> for further configuration.</returns>
+    /// <exception cref="ArgumentNullException">Thrown if <paramref name="builder"/>, <paramref name="name"/>, or <paramref name="mountPath"/> is null.</exception>
+    public static IResourceBuilder<WahaResource> WithDataVolume(this IResourceBuilder<WahaResource> builder, string name, string mountPath)
+    {
+        ArgumentNullException.ThrowIfNull(builder, nameof(builder));
+        ArgumentNullException.ThrowIfNull(name, nameof(name));
+        ArgumentNullException.ThrowIfNull(mountPath, nameof(mountPath));
+
+        return builder.WithVolume(name, mountPath);
+    }
+
     internal static class WahaContainerImageTags
     {
         internal const string Registry = "docker.io";
