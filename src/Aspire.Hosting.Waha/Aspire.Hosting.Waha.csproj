@@ -1,0 +1,40 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net9.0</TargetFramework>
+		<RootNamespace>Aspire.Hosting</RootNamespace>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+		<Authors>fabio.caldas</Authors>
+		<Company>Waha-net</Company>
+		<PackageProjectUrl>https://github.com/Waha-net/aspire-hosting-waha</PackageProjectUrl>
+		<Description>Provides extension methods and resource definitions for the .NET Aspire AppHost to support running Waha containers.</Description>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<PackageTags>waha, whatsapp</PackageTags>
+		<RepositoryUrl>https://github.com/Waha-net/aspire-hosting-waha</RepositoryUrl>
+		<RepositoryType>git</RepositoryType>
+	</PropertyGroup>
+
+	<PropertyGroup>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+	</PropertyGroup>
+	
+	<ItemGroup>
+		<None Include="..\..\..\waha-net-aspire-hosting\README.md">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+	</ItemGroup>
+
+	<PropertyGroup>
+		<GenerateDocumentationFile>True</GenerateDocumentationFile>
+		<!-- If all members are not documented, you can disable the compiler warnings -->
+		<NoWarn>$(NoWarn);CS1591</NoWarn>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Aspire.Hosting" Version="9.0.0" />
+	</ItemGroup>
+
+</Project>
