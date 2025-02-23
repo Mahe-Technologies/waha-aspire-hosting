@@ -1,4 +1,6 @@
-﻿using Aspire.Hosting.ApplicationModel;
+﻿using System.Diagnostics;
+using Aspire.Hosting.ApplicationModel;
+using Microsoft.Extensions.Diagnostics.HealthChecks;
 
 namespace Aspire.Hosting;
 
@@ -35,6 +37,10 @@ public static class WahaResourceBuilderExtensions
             .WithHttpEndpoint(port: port, targetPort: 3000, name: WahaResource.WahaEndpointName)
             .WithOtlpExporter()
             .WithHttpHealthCheck("/")
+            .WithCommand("dashboard", "Call Dashboard",
+                executeCommand: context => OnRunDashboardCommandAsync(builder, resource.PrimaryEndpoint.Url, context),
+                updateState: OnUpdateResourceState,
+                iconName: "Info")
             .ExcludeFromManifest();
     }
 
@@ -89,6 +95,22 @@ public static class WahaResourceBuilderExtensions
     public static IResourceBuilder<WahaResource> WithLifetime(this IResourceBuilder<WahaResource> builder, ContainerLifetime lifetime)
     {
         return builder.WithAnnotation(new ContainerLifetimeAnnotation { Lifetime = lifetime });
+    }
+
+    private static Task<ExecuteCommandResult> OnRunDashboardCommandAsync(
+        IDistributedApplicationBuilder builder,
+        string url,
+        ExecuteCommandContext context)
+    {
+        Process.Start(new ProcessStartInfo { FileName = url + WAHA_DASHBOARD_PATH, UseShellExecute = true });
+        return Task.FromResult(new ExecuteCommandResult() { Success = true });
+    }
+
+    private static ResourceCommandState OnUpdateResourceState(UpdateCommandStateContext context)
+    {
+        return context.ResourceSnapshot.HealthStatus is HealthStatus.Healthy
+            ? ResourceCommandState.Enabled
+            : ResourceCommandState.Disabled;
     }
 
     internal static class WahaContainerImageTags
