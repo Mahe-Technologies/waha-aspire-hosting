@@ -16,7 +16,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="..\..\waha-net-aspire-hosting\README.md">
+    <None Include="..\..\..\waha-net-aspire-hosting\README.md">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
     </None>
