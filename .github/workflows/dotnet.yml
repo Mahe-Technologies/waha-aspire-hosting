@@ -21,13 +21,13 @@ jobs:
       with:
         dotnet-version: 9.0.x
     - name: Restore dependencies
-      run: dotnet restore src
+      run: dotnet restore src/Aspire.Hosting.Waha/Aspire.Hosting.Waha.csproj
     - name: Build
-      run: dotnet build src --no-restore
+      run: dotnet build src/Aspire.Hosting.Waha/Aspire.Hosting.Waha.csproj --configuration Release
     - name: Test
-      run: dotnet test src --no-build --verbosity normal
+      run: dotnet test src/Aspire.Hosting.Waha.Test/Aspire.Hosting.Waha.Test.csproj --no-build --verbosity normal
     - name: Pack
-      run: dotnet pack src --no-build --configuration Release --output ./nupkg
+      run: dotnet pack src/Aspire.Hosting.Waha/Aspire.Hosting.Waha.csproj --no-build --configuration Release --output ./nupkg
     - name: Publish Nuget
       env:
         NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
