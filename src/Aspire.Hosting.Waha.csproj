@@ -1,0 +1,29 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <RootNamespace>Aspire.Hosting</RootNamespace>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Authors>fabio.caldas</Authors>
+    <Company>Waha-net</Company>
+    <PackageProjectUrl>https://github.com/Waha-net/aspire-hosting-waha</PackageProjectUrl>
+    <Description>Provides extension methods and resource definitions for the .NET Aspire AppHost to support running Waha containers.</Description>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <RepositoryUrl>https://github.com/Waha-net/aspire-hosting-waha</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\..\waha-net-aspire-hosting\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Aspire.Hosting" Version="9.0.0" />
+  </ItemGroup>
+
+</Project>
