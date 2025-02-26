@@ -34,7 +34,10 @@ jobs:
       uses: actions/setup-dotnet@v4
       with:
         dotnet-version: 9.0.x
-
+    
+    - name: List build output
+      run: ls -R .
+      
     - name: Restore dependencies
       run: dotnet restore ${{ vars.CS_PROJ_PATH }}
       
