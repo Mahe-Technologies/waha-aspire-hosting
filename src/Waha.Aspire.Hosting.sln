@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.13.35818.85
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aspire.Hosting.Waha", "Aspire.Hosting.Waha\Aspire.Hosting.Waha.csproj", "{F28A1919-C7E7-4DCC-ACC5-8378754FDB67}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Waha.Aspire.Hosting", "Waha.Aspire.Hosting\Waha.Aspire.Hosting.csproj", "{F28A1919-C7E7-4DCC-ACC5-8378754FDB67}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aspire.Hosting.Waha.Test", "Aspire.Hosting.Waha.Test\Aspire.Hosting.Waha.Test.csproj", "{9772C04F-4704-4E75-9E45-CF3B8078B9CB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Waha.Aspire.Hosting.Test", "Waha.Aspire.Hosting.Test\Waha.Aspire.Hosting.Test.csproj", "{9772C04F-4704-4E75-9E45-CF3B8078B9CB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

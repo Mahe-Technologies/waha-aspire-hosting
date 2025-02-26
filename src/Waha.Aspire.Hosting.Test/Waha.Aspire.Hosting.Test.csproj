@@ -15,7 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Aspire.Hosting.Waha\Aspire.Hosting.Waha.csproj" />
+    <ProjectReference Include="..\Waha.Aspire.Hosting\Waha.Aspire.Hosting.csproj" />
   </ItemGroup>
 
   <ItemGroup>
