@@ -1,8 +1,9 @@
 ﻿using System.Diagnostics;
+using Aspire.Hosting;
 using Aspire.Hosting.ApplicationModel;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 
-namespace Aspire.Hosting
+namespace Waha.Aspire.Hosting
 {
     /// <summary>
     /// Provides extension methods for building and configuring Waha resources in a distributed application.
@@ -84,17 +85,6 @@ namespace Aspire.Hosting
             ArgumentNullException.ThrowIfNull(mountPath, nameof(mountPath));
 
             return builder.WithVolume(name, mountPath);
-        }
-
-        /// <summary>
-        /// Sets the lifetime of the Waha resource container.
-        /// </summary>
-        /// <param name="builder">The resource builder.</param>
-        /// <param name="lifetime">The container lifetime.</param>
-        /// <returns>An <see cref="IResourceBuilder{WahaResource}"/> for further configuration.</returns>
-        public static IResourceBuilder<WahaResource> WithLifetime(this IResourceBuilder<WahaResource> builder, ContainerLifetime lifetime)
-        {
-            return builder.WithAnnotation(new ContainerLifetimeAnnotation { Lifetime = lifetime });
         }
 
         private static Task<ExecuteCommandResult> OnRunDashboardCommandAsync(
